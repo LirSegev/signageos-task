@@ -14,6 +14,7 @@
     "@types/react-dom": "^16.9.5",
     "@types/react-redux": "^7.1.7",
     "@types/redux-mock-store": "^1.0.2",
+    "@types/shortid": "0.0.29",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "axios": "^0.19.2",
@@ -31,6 +32,7 @@
     "redux-mock-store": "^1.5.4",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
+    "shortid": "^2.2.15",
     "typescript": "~3.7.5"
   },
   "scripts": {
