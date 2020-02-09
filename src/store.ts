@@ -2,9 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Action, combineReducers } from "@reduxjs/toolkit";
 import { ThunkAction } from "redux-thunk";
 import counterReducer from "./features/counter/CounterSlice";
+import ListReducer from "./features/search/Search.slice";
 
 export const rootReducer = combineReducers({
-  counter: counterReducer
+  counter: counterReducer,
+  list: ListReducer
 });
 
 const store = configureStore({

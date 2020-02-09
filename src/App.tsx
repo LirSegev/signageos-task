@@ -1,19 +1,18 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.scss";
-import Counter from "./features/counter/Counter";
+import "semantic-ui-css/semantic.min.css";
+
+import React from "react";
 import { Provider } from "react-redux";
+
+import List from "./features/list/List";
+import Search from "./features/search/Search";
 import store from "./store";
 
 const App = () => {
   return (
     <Provider store={store}>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Counter />
-        </header>
-      </div>
+      <Search />
+      <List />
     </Provider>
   );
 };
