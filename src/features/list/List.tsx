@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Table } from "semantic-ui-react";
+import { generate } from "shortid";
+
 import { RootState } from "../../store";
 import { fetchHeroes } from "../../utils/api";
-import { generate } from "shortid";
 
 export interface ListState {
   results: string[];
@@ -48,11 +50,17 @@ class List extends React.Component<ListProps, ListState> {
   };
 
   render() {
-    const listItems = this.state.results.map(result => (
-      <li key={`listItem-${generate()}`}>{result}</li>
+    const TableRows = this.state.results.map(result => (
+      <Table.Row key={`listItem-${generate()}`}>
+        <Table.Cell>{result}</Table.Cell>
+      </Table.Row>
     ));
 
-    return <ul>{listItems}</ul>;
+    return (
+      <Table>
+        <Table.Body>{TableRows}</Table.Body>
+      </Table>
+    );
   }
 }
 
