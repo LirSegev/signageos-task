@@ -1,10 +1,26 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Input } from "semantic-ui-react";
 
-class Search extends React.Component {
+import { updateSearchQuery } from "./Search.slice";
+
+declare type ConnectedAction<T extends (...args: any[]) => any> = (
+  ...args: Parameters<T>
+) => void;
+
+interface SearchProps {
+  updateSearchQuery: ConnectedAction<typeof updateSearchQuery>;
+}
+
+class Search extends React.Component<SearchProps> {
   render() {
-    return <Input />;
+    return (
+      <Input onChange={(e, { value }) => this.props.updateSearchQuery(value)} />
+    );
   }
 }
 
-export default Search;
+const mapDispatch = {
+  updateSearchQuery
+};
+export default connect(null, mapDispatch)(Search);
