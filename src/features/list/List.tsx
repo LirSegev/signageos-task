@@ -20,8 +20,9 @@ class List extends React.Component<ListProps, ListState> {
     this._updateResults();
   }
 
-  componentDidUpdate() {
-    this._updateResults(this.props.searchQuery);
+  componentDidUpdate(prevProps: ListProps) {
+    if (this.props.searchQuery !== prevProps.searchQuery)
+      this._updateResults(this.props.searchQuery);
   }
 
   _updateResults = (searchQuery = "") => {
