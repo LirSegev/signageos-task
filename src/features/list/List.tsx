@@ -25,14 +25,26 @@ class List extends React.Component<ListProps, ListState> {
       this._updateResults(this.props.searchQuery);
   }
 
-  _updateResults = (searchQuery = "") => {
-    fetchHeroes(searchQuery)
-      .then(results => {
-        this.setState({
-          results
-        });
-      })
-      .catch(err => console.error(err));
+  _updateResults = async (searchQuery = "") => {
+    const MAX_ATTEMPTS = 3;
+
+    let results: string[] | undefined = undefined;
+    for (
+      let attemptNum = 1;
+      attemptNum <= MAX_ATTEMPTS && !results;
+      attemptNum++
+    ) {
+      try {
+        results = await fetchHeroes(searchQuery);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    if (results)
+      this.setState({
+        results
+      });
   };
 
   render() {
