@@ -15,7 +15,10 @@ interface SearchProps {
 class Search extends React.Component<SearchProps> {
   render() {
     return (
-      <Input onChange={(e, { value }) => this.props.updateSearchQuery(value)} />
+      <Input
+        placeholder="Search..."
+        onChange={(e, { value }) => this.props.updateSearchQuery(value)}
+      />
     );
   }
 }
